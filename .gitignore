@@ -1,0 +1,16 @@
+*~
+nb-configuration.xml
+**/target/**
+**/nbactions.xml
+*.cache
+**/gwt-unitCache/**
+/compassx-ui/nbproject/
+**/.classpath
+**/.project
+**/.settings/**
+**/.designer/**
+compassx-ui/movies.txt
+styles.css
+/spring-commons/nbproject/
+/compassx-backend/nbproject/
+**/.vaadin-designer2
