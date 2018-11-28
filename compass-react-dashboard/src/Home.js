@@ -5,6 +5,16 @@ import { Link } from 'react-router-dom';
 import { Button, Container } from 'reactstrap';
 import { withCookies } from 'react-cookie';
 
+import Loadable from 'react-loadable';
+
+const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
+
+// Containers
+const DefaultLayout = Loadable({
+  loader: () => import('./containers/DefaultLayout'),
+  loading
+});
+
 class Home extends Component {
   state = {
     isLoading: true,
