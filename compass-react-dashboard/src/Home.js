@@ -47,6 +47,10 @@ class Home extends Component {
       });
   }
 
+  manageGroups = () => {
+    this.props.history.push('/groups');
+  };
+
   render() {
     const message = this.state.user ?
       <h2>Welcome, {this.state.user.name}!</h2> :
@@ -54,7 +58,10 @@ class Home extends Component {
 
     const button = this.state.isAuthenticated ?
       <div>
-        <Button color="link"><Link to="/groups">Manage JUG Tour</Link></Button>
+        {/* Firefox - cannot nest link insdie button <Button color="link"> <Link to="/groups">Manage JUG Tour</Link></Button> */}
+        <Link to="/groups">Manage JUG Tour link</Link>
+        <br/>
+       <Button color="link" onClick={this.manageGroups}>Manage JUG Tour button</Button>
         <br/>
         <Button color="link" onClick={this.logout}>Logout</Button>
       </div> :
