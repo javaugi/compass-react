@@ -8,23 +8,32 @@ var production = process.argv.reduce(function(p, c){return p || c == '-p'}, fals
 
 
 var config = {
-    // Get the root path (assuming your webpack config is in the root of your project!)
-    const currentPath = path.join(__dirname);
-    // Create the fallback path (the production .env)
-    const basePath = currentPath + '/.env';
+  resolve: {
+        root: [
+            path.resolve(__dirname  + '/src')
+        ],
+        alias: {
+            src: path.resolve(__dirname  + '/src');
 
-    // We're concatenating the environment name to our filename to specify the correct env file!
-    const envPath = basePath + '.' + env.ENVIRONMENT;
+            // Get the root path (assuming your webpack config is in the root of your project!)
+            const currPath = path.join(__dirname);
+            // Create the fallback path (the production .env)
+            const basePath = currPath + '/.env';
 
-    // Set the path parameter in the dotenv config
-    const env = dotenv.config({ path: finalPath }).parsed;
+            // We're concatenating the environment name to our filename to specify the correct env file!
+            const envPath = basePath + '.' + env.ENVIRONMENT;
 
-    // call dotenv and it will return an Object with a parsed key
-    //const env = dotenv.config().parsed;
-    const envKeys = Object.keys(env).reduce((prev, next) => {
-      prev[`process.env.${next}`] = JSON.stringify(env[next]);
-      return prev;
-    }, {});
+            // Set the path parameter in the dotenv config
+            const env = dotenv.config({ path: finalPath }).parsed;
+
+            // call dotenv and it will return an Object with a parsed key
+            //const env = dotenv.config().parsed;
+            const envKeys = Object.keys(env).reduce((prev, next) => {
+              prev[`process.env.${next}`] = JSON.stringify(env[next]);
+              return prev;
+            }, {});
+        }
+    },
 
     context: path.join(__dirname, '/src'),
     entry: {
