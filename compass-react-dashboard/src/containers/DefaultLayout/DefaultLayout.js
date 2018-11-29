@@ -13,7 +13,7 @@ import {
   AppSidebarHeader,
   AppSidebarMinimizer,
   AppSidebarNav,
-} from '/src/coreui/coreui-react';
+} from '@coreui/react';
 // sidebar nav config
 import navigation from '../../_nav';
 // routes config

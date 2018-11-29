@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, CardBody, CardHeader, Col, Row, Table } from 'reactstrap';
-import { AppSwitch } from '/src/coreui/coreui-react'
+import { AppSwitch } from '@coreui/react'
 
 class Switches extends Component {
   render() {

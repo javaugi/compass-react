@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import AppNavbar from './AppNavbar';
-import { Link } from 'react-router-dom';
+import { Link, Route, HashRouter, Switch } from 'react-router-dom';
 import { Button, Container } from 'reactstrap';
 import { withCookies } from 'react-cookie';
 
@@ -12,6 +12,28 @@ const loading = () => <div className="animated fadeIn pt-3 text-center">Loading.
 // Containers
 const DefaultLayout = Loadable({
   loader: () => import('./containers/DefaultLayout'),
+  loading
+});
+
+
+// Pages
+const Login = Loadable({
+  loader: () => import('./views/Pages/Login'),
+  loading
+});
+
+const Register = Loadable({
+  loader: () => import('./views/Pages/Register'),
+  loading
+});
+
+const Page404 = Loadable({
+  loader: () => import('./views/Pages/Page404'),
+  loading
+});
+
+const Page500 = Loadable({
+  loader: () => import('./views/Pages/Page500'),
   loading
 });
 
@@ -63,7 +85,8 @@ class Home extends Component {
 
   render() {
     const message = this.state.user ?
-      <h2>Welcome, {this.state.user.name}!</h2> :
+      <h2>Welcome, {this.state.user.name}!
+      </h2> :
       <p>Please log in to manage your JUG Tour.</p>;
 
     const button = this.state.isAuthenticated ?
@@ -78,13 +101,13 @@ class Home extends Component {
       <Button color="primary" onClick={this.login}>Login</Button>;
 
     return (
-      <div>
-        <AppNavbar/>
-        <Container fluid>
-          {message}
-          {button}
-        </Container>
-      </div>
+       <div>
+         <AppNavbar/>
+         <Container fluid>
+           {message}
+           {button}
+         </Container>
+       </div>
     );
   }
 }
