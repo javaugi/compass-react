@@ -1,11 +1,33 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense  } from 'react';
 import './App.css';
 import AppNavbar from './AppNavbar';
-import { Link, Route, HashRouter, Switch } from 'react-router-dom';
+import { Link, Redirect, Route, HashRouter, Switch } from 'react-router-dom';
 import { Button, Container } from 'reactstrap';
 import { withCookies } from 'react-cookie';
 
 import Loadable from 'react-loadable';
+
+
+import {
+  AppAside,
+  AppBreadcrumb,
+  AppFooter,
+  AppHeader,
+  AppSidebar,
+  AppSidebarFooter,
+  AppSidebarForm,
+  AppSidebarHeader,
+  AppSidebarMinimizer,
+  AppSidebarNav,
+} from '@coreui/react';
+// sidebar nav config
+import navigation from './_nav';
+// routes config
+import routes from './routes';
+
+const DefaultAside = React.lazy(() => import('./containers/DefaultLayout/DefaultAside'));
+const DefaultFooter = React.lazy(() => import('./containers/DefaultLayout/DefaultFooter'));
+const DefaultHeader = React.lazy(() => import('./containers/DefaultLayout/DefaultHeader'));
 
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
@@ -106,7 +128,20 @@ class Home extends Component {
          <Container fluid>
            {message}
            {button}
-         </Container>
+
+         <div className="app-body">
+                   <AppSidebar fixed display="lg">
+                     <AppSidebarHeader />
+                     <AppSidebarForm />
+                     <Suspense>
+                     <AppSidebarNav navConfig={navigation} {...this.props} />
+                     </Suspense>
+                     <AppSidebarFooter />
+                     <AppSidebarMinimizer />
+                   </AppSidebar>
+                 </div>
+
+                 </Container>
        </div>
     );
   }

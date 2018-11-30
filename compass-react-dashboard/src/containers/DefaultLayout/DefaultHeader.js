@@ -21,6 +21,7 @@ class DefaultHeader extends Component {
 
     return (
       <React.Fragment>
+      {/*
         <AppSidebarToggler className="d-lg-none" display="md" mobile />
         <AppNavbarBrand
           full={{ src: logo, width: 89, height: 25, alt: 'CoreUI Logo' }}
@@ -70,7 +71,7 @@ class DefaultHeader extends Component {
             </DropdownMenu>
           </AppHeaderDropdown>
         </Nav>
-        <AppAsideToggler className="d-md-down-none" />
+        <AppAsideToggler className="d-md-down-none" /> */}
         {/*<AppAsideToggler className="d-lg-none" mobile />*/}
       </React.Fragment>
     );
