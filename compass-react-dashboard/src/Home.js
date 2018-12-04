@@ -119,7 +119,10 @@ class Home extends Component {
        <Button color="link" onClick={this.manageGroups}>Manage JUG Tour button</Button>
         <br/>
         <Button color="link" onClick={this.logout}>Logout</Button>
-      </div> :
+        <br/>
+        <AppSidebarNav navConfig={navigation} {...this.props} />
+        </div>
+      :
       <Button color="primary" onClick={this.login}>Login</Button>;
 
     return (
@@ -128,20 +131,7 @@ class Home extends Component {
          <Container fluid>
            {message}
            {button}
-
-         <div className="app-body">
-                   <AppSidebar fixed display="lg">
-                     <AppSidebarHeader />
-                     <AppSidebarForm />
-                     <Suspense>
-                     <AppSidebarNav navConfig={navigation} {...this.props} />
-                     </Suspense>
-                     <AppSidebarFooter />
-                     <AppSidebarMinimizer />
-                   </AppSidebar>
-                 </div>
-
-                 </Container>
+        </Container>
        </div>
     );
   }
